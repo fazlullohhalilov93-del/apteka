@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedNova Pharmacy — современная аптечная сеть в Ташкенте</title>
+<meta name="description" content="MedNova Pharmacy — демонстрационный сайт вымышленной аптечной сети: каталог, корзина, акции, программа лояльности MedNova Club, филиалы в Ташкенте.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="progress"></div>
+<header id="nav">
+  <a href="#home" class="logo"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#2e9e6b"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#fff"/></svg><span>MedNova <b>Pharmacy</b></span></a>
+  <nav id="menu">
+    <a href="#about" data-i18n="nav_about">О сети</a>
+    <a href="#catalog" data-i18n="nav_cat">Каталог</a>
+    <a href="#promos" data-i18n="nav_promo">Акции</a>
+    <a href="#club" data-i18n="nav_club">MedNova Club</a>
+    <a href="#stores" data-i18n="nav_stores">Аптеки</a>
+    <a href="#contacts" data-i18n="nav_con">Контакты</a>
+  </nav>
+  <div class="nav-right">
+    <select id="lang" aria-label="Язык"><option value="ru">RU</option><option value="en">EN</option><option value="uz">UZ</option></select>
+    <button class="cartbtn" id="cartBtn" aria-label="Корзина">🛒<i id="cartCount">0</i></button>
+    <button id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-in">
+    <span class="chip glass">💊 Демонстрационный сайт · данные вымышлены</span>
+    <h1 data-i18n="h1">Здоровье начинается с заботы</h1>
+    <p data-i18n="sub">MedNova Pharmacy — современные фармацевтические решения, качественные товары для здоровья и профессиональная забота о каждом клиенте.</p>
+    <div class="cta"><a class="btn" href="#catalog" data-i18n="b_cat">Перейти в каталог</a><a class="btn ghost" href="#stores" data-i18n="b_near">Найти ближайшую аптеку</a></div>
+    <div class="stats glass">
+      <div><b data-n="12">0</b><span data-i18n="s1">лет работы</span></div>
+      <div><b data-n="35">0</b><span data-i18n="s2">аптек</span></div>
+      <div><b data-n="5000" data-plus="1">0</b><span data-i18n="s3">товаров</span></div>
+      <div><b data-n="200" data-plus="1">0</b><span data-i18n="s4">специалистов</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="sec">
+  <div class="head reveal"><small>Вымышленные демонстрационные данные</small><h2 data-i18n="t_about">История MedNova Pharmacy</h2>
+  <p>В 2014 году группа молодых фармацевтов и предпринимателей основала первую аптеку MedNova в Ташкенте. Цель — аптечная сеть, которая объединяет качественные товары, профессиональные консультации и современный сервис.</p></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="catalog" class="sec alt">
+  <div class="head reveal"><small>Демонстрационный каталог</small><h2 data-i18n="t_cat">Каталог товаров</h2>
+  <p>Товары и цены вымышлены. Сайт не даёт медицинских рекомендаций и не содержит информации о дозировках.</p></div>
+  <div class="cats" id="cats"></div>
+  <div class="tools card">
+    <input id="q" type="search" placeholder="🔍 Поиск по названию" aria-label="Поиск">
+    <select id="sort"><option value="pop">Сначала популярные</option><option value="asc">Цена: по возрастанию</option><option value="desc">Цена: по убыванию</option></select>
+    <label class="chk"><input type="checkbox" id="avail"> Только в наличии</label>
+    <button class="btn small" id="reset">Сбросить</button>
+  </div>
+  <p id="found" class="note c"></p>
+  <div class="grid" id="products"></div>
+  <div id="empty" class="empty" hidden>🔎<p>По вашему запросу ничего не найдено. Попробуйте изменить поисковый запрос</p></div>
+</section>
+
+<section id="promos" class="sec">
+  <div class="head reveal"><small>Демонстрационные акции</small><h2 data-i18n="t_promo">Акции и специальные предложения</h2></div>
+  <div class="grid promo" id="promoGrid"></div>
+</section>
+
+<section id="team" class="sec alt">
+  <div class="head reveal"><small>Все имена и биографии вымышлены</small><h2 data-i18n="t_team">Наши фармацевты</h2></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="teamGrid"></div>
+</section>
+
+<section id="gallery" class="sec">
+  <div class="head reveal"><small>MedNova Pharmacy</small><h2 data-i18n="t_gal">Фотогалерея аптек</h2></div>
+  <div class="gallery" id="galGrid"></div>
+</section>
+
+<section id="club" class="sec mint">
+  <div class="club">
+    <div class="reveal">
+      <small>Программа лояльности</small><h2 data-i18n="t_club">MedNova Club</h2>
+      <p>MedNova Club — программа лояльности для постоянных покупателей. Получайте бонусы за покупки и пользуйтесь специальными предложениями.</p>
+      <ul class="perks"><li>🎁 Бонусы за покупки</li><li>✨ Персональные предложения</li><li>🧾 История заказов</li><li>🏷️ Специальные акции</li><li>👤 Удобный личный кабинет</li></ul>
+      <button class="btn" id="joinBtn">Стать участником</button>
+    </div>
+    <div class="bonus reveal"><div class="bc-top"><span>MedNova <b>Club</b></span><svg width="34" height="34" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#fff" opacity=".25"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#fff"/></svg></div>
+      <div class="bc-num">0000 0000 0000</div><div class="bc-bot"><span>ДЕМО-КАРТА</span><span>1 250 бонусов</span></div></div>
+  </div>
+</section>
+
+<section id="stores" class="sec">
+  <div class="head reveal"><small>Адреса вымышлены</small><h2 data-i18n="t_stores">Наши аптеки</h2></div>
+  <div class="storewrap">
+    <div class="map" id="map" aria-label="Стилизованная карта Ташкента"><i class="r1"></i><i class="r2"></i><i class="r3"></i><i class="park"></i><i class="river"></i></div>
+    <div class="card sinfo" id="sinfo"></div>
+  </div>
+</section>
+
+<section id="delivery" class="sec alt">
+  <div class="head reveal"><small>Демонстрация без серверной части</small><h2 data-i18n="t_del">Доставка и получение заказа</h2>
+  <p>Описание условий демонстрационное: реальная доставка недоступна без подключения backend-системы.</p></div>
+  <div class="grid del" id="delGrid"></div>
+</section>
+
+<section id="tech" class="sec">
+  <div class="head reveal"><small>Technology</small><h2 data-i18n="t_tech">Аптека будущего</h2>
+  <p>Современные технологии помогают быстрее обслуживать покупателей, точнее вести учёт и надёжно хранить товары.</p></div>
+  <div class="grid" id="techGrid"></div>
+</section>
+
+<section id="reviews" class="sec dark">
+  <div class="head reveal"><small>Демонстрационные отзывы — не реальные отзывы покупателей</small><h2 data-i18n="t_rev">Отзывы покупателей</h2></div>
+  <div class="slider glass"><div class="slide" id="slide"></div>
+    <div class="slider-ctl"><button id="prev" aria-label="Назад">←</button><div id="dots"></div><button id="next" aria-label="Вперед">→</button></div></div>
+</section>
+
+<section id="contacts" class="sec">
+  <div class="head reveal"><small>Demo data</small><h2 data-i18n="t_con">Контакты</h2></div>
+  <div class="contacts">
+    <div class="card info">
+      <p>📍 <b>Адрес:</b> Ташкент, Узбекистан</p>
+      <p>📞 <b>Телефон:</b> <a href="tel:+998710000000">+998 71 000 00 00</a></p>
+      <p>✉️ <b>Email:</b> info@mednova.example</p>
+      <p>🕒 <b>Время работы:</b> ежедневно, 08:00–23:00</p>
+      <p>🏪 <b>Филиалы:</b> 5 демонстрационных аптек — <a href="#stores">смотреть</a></p>
+      <div class="soc"><a href="#" data-soc="Telegram">Telegram</a><a href="#" data-soc="Instagram">Instagram</a><a href="#" data-soc="Facebook">Facebook</a></div>
+      <p class="note">Контакты вымышлены и приведены для демонстрации.</p>
+    </div>
+    <form id="fb" class="card form" novalidate>
+      <label>Имя<input name="name"><em></em></label>
+      <label>Email<input name="email" type="email"><em></em></label>
+      <label>Сообщение<textarea name="msg" rows="4"></textarea><em></em></label>
+      <button class="btn" type="submit">Отправить</button>
+      <p class="note">Демо-форма: сообщение никуда не отправляется.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div><a class="logo light" href="#home"><span>MedNova <b>Pharmacy</b></span></a><p>Вымышленная аптечная сеть для учебного веб-проекта. Основана в 2014 году.</p></div>
+  <div><p>+998 71 000 00 00<br>info@mednova.example<br>Ежедневно, 08:00–23:00</p></div>
+  <div><p>© 2026 MedNova Pharmacy. Демо-сайт.<br>Материалы не являются медицинской консультацией. Перед применением любых средств проконсультируйтесь со специалистом.</p></div>
+</footer>
+
+<a class="sos" href="tel:+998710000000" title="Медицинская помощь">⚕️ <span>Консультация фармацевта</span></a>
+<a class="call" href="tel:+998710000000" aria-label="Быстрый звонок">📞</a>
+<button id="top" aria-label="Наверх">↑</button>
+
+<div id="lb" class="ov lb"><button class="x" data-close>×</button><img alt=""></div>
+<div id="modal" class="ov"><div class="box" id="box"><button class="x dark" data-close>×</button><div id="mbody"></div></div></div>
+<aside id="drawer"><div class="dh"><h3>Корзина</h3><button class="x dark" id="dclose">×</button></div><div id="items"></div>
+  <div class="df"><div class="tot"><span>Итого</span><b id="total">0 сум</b></div><button class="btn" id="checkout">Оформить заказ</button></div></aside>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
